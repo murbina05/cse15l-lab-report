@@ -47,9 +47,48 @@ However now when we pass the directory we found above you see we get a lot more 
 Hello.class  Hello.java  messages  README
 ```
 
-This is one of the use cases that is not that, well useful. When you use ls on a file it returns the path to that file here we are calling it from teh home directory and it tells us to look in the lecture1 folder and in there you will find Hello.java
+This is one of the use cases that is not that, well useful. When you use ls on a file it returns the path to that file here we are calling it from the home directory and it tells us to look in the lecture1 folder and in there you will find Hello.java
 
 ```
 [user@sahara ~]$ ls lecture1/Hello.java
 lecture1/Hello.java
+```
+
+## cat
+
+Lastly we have cat. Cat is short for concatinate, however this tool although is not used as much as the previous two it has a lot of uses that unfortanatly we do not cover here. However a general premise is it works with text.
+
+When you use cat by itself it opens a sort of terminal where it will return everything you type. Something important to keep in mind is if you want to exit this you use the commant ctrl c.
+
+```
+
+[user@sahara ~]$ cat
+hello world
+hello world
+```
+
+Next when you run the cat command on a directory you get the following prompt:
+
+```
+[user@sahara ~]$ cat lecture1/
+cat: lecture1/: Is a directory
+```
+
+This happens becuase you can't concatinate a directory. Directories are more like a road that leads you to building. They do not themselves hold the critical information but they lead to where it is.
+
+Lastly we have when you use a file as an argument. When you do this it will print out all the contents of that file. This can be useful when youa re de-bugging or whenever you are just curious what that file contains.
+
+```
+[user@sahara ~/lecture1]$ cat Hello.java
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+public class Hello {
+  public static void main(String[] args) throws IOException {
+    String content = Files.readString(Path.of(args[0]), Standar
+dCharsets.UTF_8);    
+    System.out.println(content);
+  }
 ```
